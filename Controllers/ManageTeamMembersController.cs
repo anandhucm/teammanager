@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using MYTEAMMANAGER.Data;
 using MYTEAMMANAGER.Models.Entities;
 using MYTEAMMANAGER.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace MYTEAMMANAGER.Controllers
 {
@@ -18,9 +19,9 @@ namespace MYTEAMMANAGER.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetAllTeamMembers()
+        public async Task<IActionResult> GetAllTeamMembers()
         {
-            var allEmployeeTeamMembers = dbContext.TeamMembers.ToList();
+            var allEmployeeTeamMembers = await dbContext.TeamMembers.ToListAsync();
             return Ok(allEmployeeTeamMembers);
 
         }
@@ -39,7 +40,7 @@ namespace MYTEAMMANAGER.Controllers
 
             dbContext.TeamMembers.Add(TeamMemberEntity); // like persist in symfony
             dbContext.SaveChanges();  //like flush in symfony
-            
+
 
             return Ok(TeamMemberEntity);
 
