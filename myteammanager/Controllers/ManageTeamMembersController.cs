@@ -39,7 +39,6 @@ namespace MYTEAMMANAGER.Controllers
 
             dbContext.TeamMembers.Add(TeamMemberEntity); // like persist in symfony
             dbContext.SaveChanges();  //like flush in symfony
-
             return Ok(TeamMemberEntity);
 
         }
