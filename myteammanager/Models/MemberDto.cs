@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace MYTEAMMANAGER.Models
 {
-    public class AddTeamMemberDto
+    public class MemberDto
     {
         public Guid Id { get; set; }
 
@@ -15,24 +15,12 @@ namespace MYTEAMMANAGER.Models
         [Required] 
         // [Required(AllowEmptyStrings = true)]  // this will only validates the null not the empty string.
         public required string LastName { get; set; }
-
-        [Required]
-        public required float Age { get; set; }
-
-        public string? MobileNumber { get; set; }  //(question mark is to make this a nullable property)
-
-        [Required]
-        [EmailAddress]
-        public required string Email { get; set; }
         
         [Required]
         public required string EmployeeCode { get; set; }
 
-        [Required]
-        [MinLength(4)]
-        public required string Password { get; set; }
-        
-        [Required] 
-        public required string UserName { get; set; }
+        public string? ImageUrl { get; set; }
+
+        public string Token { get; set; }
     }
 }

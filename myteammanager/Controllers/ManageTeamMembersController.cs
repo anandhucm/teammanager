@@ -5,11 +5,7 @@ using MYTEAMMANAGER.Models;
 
 namespace MYTEAMMANAGER.Controllers
 {
-    //localhost:xxxx/api/manageteammembers
-    [Route("api/[controller]")]
-    [ApiController]
-
-    public class ManageTeamMembersController : ControllerBase
+    public class ManageTeamMembersController : BaseApiController
     {
         private readonly ApplicationDbContext dbContext;
         public ManageTeamMembersController(ApplicationDbContext dbContext)
@@ -34,11 +30,14 @@ namespace MYTEAMMANAGER.Controllers
                 LastName = addTeamMemberDto.LastName,
                 Email = addTeamMemberDto.Email,
                 Age = addTeamMemberDto.Age,
-                EmployeeCode = addTeamMemberDto.EmployeeCode
+                EmployeeCode = addTeamMemberDto.EmployeeCode,
+                PasswordHash = null,
+                PasswordSalt = Array.Empty<byte>(),
+                UserName = null
             };
 
             dbContext.TeamMembers.Add(TeamMemberEntity); // like persist in symfony
-            dbContext.SaveChanges();  //like flush in symfony
+            dbContext.SaveChanges();  //like flush in symfony 
             return Ok(TeamMemberEntity);
 
         }

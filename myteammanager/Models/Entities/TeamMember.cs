@@ -18,6 +18,13 @@ namespace MYTEAMMANAGER.Models.Entities
 
         public required string EmployeeCode { get; set; }
 
+        public required byte[] PasswordHash { get; set; }
+
+        public required byte[] PasswordSalt { get; set; }
+
+        public required string UserName { get; set; }
+
+
         
     }
 }
