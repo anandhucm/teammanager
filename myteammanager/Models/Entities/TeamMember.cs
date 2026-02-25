@@ -25,6 +25,6 @@ namespace MYTEAMMANAGER.Models.Entities
         public required string UserName { get; set; }
 
 
-        
+
     }
 }

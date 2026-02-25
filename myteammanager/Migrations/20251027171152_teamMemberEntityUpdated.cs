@@ -15,14 +15,14 @@ namespace myteammanager.Migrations
                 table: "TeamMembers",
                 type: "varbinary(max)",
                 nullable: false,
-                defaultValue: new byte[0]);
+                defaultValue: Array.Empty<byte>());
 
             migrationBuilder.AddColumn<byte[]>(
                 name: "PasswordSalt",
                 table: "TeamMembers",
                 type: "varbinary(max)",
                 nullable: false,
-                defaultValue: new byte[0]);
+                defaultValue: Array.Empty<byte>());
         }
 
         /// <inheritdoc />

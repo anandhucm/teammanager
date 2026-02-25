@@ -68,12 +68,12 @@ namespace MYTEAMMANAGER.Controllers
         {
 
             var validationData = await CheckForTheDuplication(addTeamMemberDto.Email, addTeamMemberDto.UserName);
-            if(validationData.TryGetValue("status", out string status) && status == "error")
+            if (validationData.TryGetValue("status", out string status) && status == "error")
             {
                 return BadRequest(validationData);
             }
 
- 
+
 
 
             var hmac = new HMACSHA512(); // hmac means hashed message authentication code., sha512 is secure hash algorithm -512 bit(64bytes)           
@@ -102,9 +102,10 @@ namespace MYTEAMMANAGER.Controllers
 
         public async Task<Dictionary<string, string>> CheckForTheDuplication(string email, string userName)
         {
-            var validationData = new Dictionary<string, string>();
-
-            validationData["status"] = "success";
+            var validationData = new Dictionary<string, string>
+            {
+                ["status"] = "success"
+            };
             // email = email;
             // userName = userName?.Trim().ToLower();
             var duplicateEmailOrUserName = await dbContext.TeamMembers
@@ -153,7 +154,7 @@ namespace MYTEAMMANAGER.Controllers
 
         [HttpPost("manager-details")]
         // [AllowAnonymous]
-        public async Task<ActionResult<TeamMember>>getManagerDetails([FromHeader]Guid  Id)
+        public async Task<ActionResult<TeamMember>> getManagerDetails([FromHeader] Guid Id)
         {
             var manager = dbContext.TeamMembers.Find(Id) ?? throw new Exception("manager is not found");
             return Ok(manager);

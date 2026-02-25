@@ -5,7 +5,7 @@ using Microsoft.IdentityModel.Tokens; // provides classes for token creation, si
 using System.Text; //needed for Encoding.UTF8 
 using System.Security.Claims; //provies Claim, ClaimTypes, ClaimsIdentity. - claims are the information you put inside the token.
 using System.IdentityModel.Tokens.Jwt; //contains JwtSecurityTokenHandler, which can create, write and validate Jwt tokens.
- 
+
 namespace MYTEAMMANAGER.Services
 {
     public class TokenService(IConfiguration config) : ITokenService
@@ -24,7 +24,7 @@ namespace MYTEAMMANAGER.Services
             */
             var convertedTokenKey = Encoding.UTF8.GetBytes(tokenKey);
             var key = new SymmetricSecurityKey(convertedTokenKey);
-            
+
 
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
 

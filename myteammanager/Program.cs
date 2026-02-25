@@ -5,6 +5,7 @@ using MYTEAMMANAGER.Interfaces;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using MYTEAMMANAGER.MiddleWare;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -41,6 +42,9 @@ var app = builder.Build();
 app.MapControllers();
 
 // Configure the HTTP request pipeline.
+
+app.UseMiddleware<ExceptionMiddleWare>();
+
 app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:4200", "https://localhost:4200"));
 if (app.Environment.IsDevelopment())
 {

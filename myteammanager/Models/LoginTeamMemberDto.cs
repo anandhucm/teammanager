@@ -10,8 +10,8 @@ namespace MYTEAMMANAGER.Models
         [Required]
         [MinLength(4)]
         public required string Password { get; set; }
-        
-        [Required] 
+
+        [Required]
         public required string UserName { get; set; }
     }
 }

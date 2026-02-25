@@ -17,9 +17,9 @@ namespace MYTEAMMANAGER.Extensions
                 EmployeeCode = teamMember.EmployeeCode,
                 Token = iTokenService.CreateToken(teamMember)
             };
-            
+
             return member;
 
         }
-    } 
+    }
 }

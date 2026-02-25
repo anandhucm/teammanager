@@ -11,6 +11,7 @@ export class AccountService {
   private account = inject(HttpClient);
   public  baseUrl = "http://localhost:5052/api/";
   public memberData = signal<User | null>(null);
+  protected isLoggedIn = signal(false);
 
   login(credentials: any){
     return this.account.post<User>(this.baseUrl + "account/login", credentials).pipe(
@@ -18,10 +19,17 @@ export class AccountService {
         if(user){
           console.log("user", user);
           this.memberData.set(user);
+          this.isLoggedIn.set(true);
           localStorage.setItem("memberData", JSON.stringify(user));
         }      
       })
     );
   }
-  
+
+  logout(){
+    this.isLoggedIn.set(false);
+    localStorage.removeItem("memberData");
+    this.memberData.set(null);
+  }
+
 }

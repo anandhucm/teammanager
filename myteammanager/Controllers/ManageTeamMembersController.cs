@@ -5,13 +5,9 @@ using MYTEAMMANAGER.Models;
 
 namespace MYTEAMMANAGER.Controllers
 {
-    public class ManageTeamMembersController : BaseApiController
+    public class ManageTeamMembersController(ApplicationDbContext dbContext) : BaseApiController
     {
-        private readonly ApplicationDbContext dbContext;
-        public ManageTeamMembersController(ApplicationDbContext dbContext)
-        {
-            this.dbContext = dbContext;
-        }
+        private readonly ApplicationDbContext dbContext = dbContext;
 
         [HttpGet]
         public IActionResult GetAllTeamMembers()
@@ -32,7 +28,7 @@ namespace MYTEAMMANAGER.Controllers
                 Age = addTeamMemberDto.Age,
                 EmployeeCode = addTeamMemberDto.EmployeeCode,
                 PasswordHash = null,
-                PasswordSalt = Array.Empty<byte>(),
+                PasswordSalt = [],
                 UserName = null
             };
 
@@ -102,7 +98,7 @@ namespace MYTEAMMANAGER.Controllers
             var teamMember = dbContext.TeamMembers.Where(x =>
             searchWord.Length >= 3 &&
             (
-            x.FirstName.ToLower().Contains(searchWord) ||
+            x.FirstName.Contains(searchWord, StringComparison.CurrentCultureIgnoreCase) ||
             (x.EmployeeCode == searchWord) ||
             (x.LastName == searchWord)
             )
@@ -113,7 +109,7 @@ namespace MYTEAMMANAGER.Controllers
                 return NotFound();
             }
             return Ok(teamMember);
-            
+
         }
 
 

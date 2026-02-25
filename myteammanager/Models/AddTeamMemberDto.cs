@@ -12,7 +12,7 @@ namespace MYTEAMMANAGER.Models
 
         public string? MiddleName { get; set; }
 
-        [Required] 
+        [Required]
         // [Required(AllowEmptyStrings = true)]  // this will only validates the null not the empty string.
         public required string LastName { get; set; }
 
@@ -24,15 +24,15 @@ namespace MYTEAMMANAGER.Models
         [Required]
         [EmailAddress]
         public required string Email { get; set; }
-        
+
         [Required]
         public required string EmployeeCode { get; set; }
 
         [Required]
         [MinLength(4)]
         public required string Password { get; set; }
-        
-        [Required] 
+
+        [Required]
         public required string UserName { get; set; }
     }
 }

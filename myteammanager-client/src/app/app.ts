@@ -1,21 +1,27 @@
 import { Component, signal, inject, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { lastValueFrom } from 'rxjs';
-import { Nav } from "../layout/nav/nav";
+import { AccountService } from '../core/service/account-service';
+import { RouterOutlet } from '@angular/router';
+import { Toastr } from '../toastr/toastr/toastr';
 
 @Component({
   selector: 'app-root',
-  imports: [Nav],
+  imports: [RouterOutlet, Toastr],
   templateUrl: './app.html',
-  styleUrl: './app.css'
+  styleUrls: ['./app.css']
 })
 
 export class App implements OnInit { // if we implements OnInit interface we should implement its method, otherwise show error.
+
+  protected accountService = inject(AccountService);
   private http = inject(HttpClient);  // class is constructed like we constructed in c# 
   protected readonly title = signal('myteammanager');
   protected responsejson = signal<any>([]);
   async ngOnInit() {
     this.responsejson.set(await this.getMembers());
+    console.log('inside the ng on init');
+    this.setCurrentUser();
   }
 
   async getMembers(){
@@ -27,4 +33,13 @@ export class App implements OnInit { // if we implements OnInit interface we sho
       throw error;
     }
   } 
+
+  setCurrentUser(){
+    const userString = localStorage.getItem("memberData");
+    console.log(userString);
+    if(!userString) return;
+    const user = JSON.parse(userString);
+    console.log("inside it user", user);
+    this.accountService.memberData.set(user);
+  }
 }

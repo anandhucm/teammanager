@@ -1,6 +1,8 @@
 import { Component, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AccountService } from '../../core/service/account-service';
+import { Router, RouterLink } from '@angular/router';
+import { ToastrService } from '../../core/service/toastr-service';
 
 @Component({
   selector: 'app-nav',
@@ -12,26 +14,27 @@ export class Nav {
 
   protected credentials: any = {};
   protected accountService = inject(AccountService);
-  protected isLoggedIn = signal(false);
   protected darkModeVar = signal(false);
   protected memberData = this.accountService.memberData;
+  protected router = inject(Router);
+  protected toastrService = inject(ToastrService);
 
   login(){
     this.accountService.login(this.credentials).subscribe({
        next: (result: any) => {
-        console.log(result);
-        this.isLoggedIn.set(true);
+        this.toastrService.showToast("Successfully logged in", "Success");
         this.credentials = {};
+        this.router.navigate(['/dashboard']);
+        
        },
        error: (error: any) => {
-        console.log(error);
+        if(typeof error.error === "string"){
+          this.toastrService.showToast(error.error, "Error");
+        }else{
+          this.toastrService.showToast("Cannot login, issue occured", "Error");
+        }
        }
     })
-  }
-
-  logout(){
-    this.isLoggedIn.set(false);
-    localStorage.removeItem("memberData");
   }
 
   darkMode(){
