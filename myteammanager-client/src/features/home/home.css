@@ -1,0 +1,81 @@
+/* Full screen split */
+.screen-container {
+  display: flex;
+  height: 100vh;
+  background: #000;
+  color: white;
+}
+
+/* LEFT HALF */
+.left-panel {
+  width: 50%;
+  padding: 20px;
+  border-right: 1px solid #222;
+  overflow-y: auto;
+  margin-top: 63px; /* Navbar height */
+}
+
+/* RIGHT HALF */
+.right-panel {
+  width: 50%;
+  padding: 20px;
+}
+
+/* Standard placeholder text */
+.placeholder {
+  color: #888;
+  font-size: 16px;
+}
+
+/* --- CLEAN, STANDARD TABLE --- */
+.team-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #151515;
+}
+
+/* Table header */
+.team-table th {
+  background: #202020;
+  padding: 10px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 14px;
+  border-bottom: 1px solid #333;
+  color: #ddd;
+}
+
+/* Table rows */
+.team-table td {
+  padding: 10px;
+  border-bottom: 1px solid #2a2a2a;
+  color: #ccc;
+  font-size: 14px;
+}
+
+/* Row hover (clean) */
+.team-table tr:hover {
+  background: #222;
+}
+
+/* --- Simple Buttons --- */
+.remove-btn,
+.update-btn,
+.add-btn {
+  padding: 6px 12px;
+  border: none;
+  cursor: pointer;
+  font-size: 13px;
+  border-radius: 3px;
+  color: #fff;
+}
+
+/* Clean standard colors (no glow) */
+.remove-btn { background: #c0392b; }
+.update-btn { background: #2980b9; }
+.add-btn    { background: #27ae60; }
+
+/* Button hover */
+.remove-btn:hover  { background: #a33025; }
+.update-btn:hover  { background: #2270a5; }
+.add-btn:hover     { background: #1f8f4d; }
