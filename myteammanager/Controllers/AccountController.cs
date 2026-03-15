@@ -136,6 +136,10 @@ namespace MYTEAMMANAGER.Controllers
         {
             var userName = loginTeamMemberDto.UserName.Trim();
             var password = loginTeamMemberDto.Password;
+            if(userName == "" || password == "")
+            {
+                throw new Exception("username or password is emtpy");
+            }
 
             var teamMemberDocument = await dbContext.TeamMembers.SingleOrDefaultAsync(x => x.UserName == userName);
             if (teamMemberDocument == null) return Unauthorized("Invalid user name");

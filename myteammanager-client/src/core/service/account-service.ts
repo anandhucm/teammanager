@@ -9,7 +9,7 @@ import { tap } from 'rxjs';
 export class AccountService {
 
   private account = inject(HttpClient);
-  public  baseUrl = "http://localhost:5052/api/";
+  public  baseUrl = "https://localhost:7146/api/";
   public memberData = signal<User | null>(null);
   protected isLoggedIn = signal(false);
 
