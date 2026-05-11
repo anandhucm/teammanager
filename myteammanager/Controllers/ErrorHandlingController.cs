@@ -7,6 +7,11 @@ namespace MYTEAMMANAGER.Controllers
 
     public class  ErrorHandlingController : BaseApiController
     {
+        private readonly IConfiguration _configuration;
+        public ErrorHandlingController(IConfiguration configuration)
+        {
+            _configuration = configuration;
+        }
 
         [HttpGet("auth")]
         public IActionResult GetAuth()
@@ -26,7 +31,11 @@ namespace MYTEAMMANAGER.Controllers
         {
             var number = 0;
             var divi = (float)20/number;
-            return Ok( new {divi});
+            var TimeNow = DateTime.UtcNow;
+            var no = 12;
+            var timeZoneId = _configuration["AppSettings:TimeZone"];
+            var timeIndia = TimeZoneInfo.ConvertTimeBySystemTimeZoneId(TimeNow, timeZoneId);
+            return Ok( new { timeZoneIdFromEnv = timeZoneId, globalTiming = TimeNow, timingIndia = timeIndia  });
         }
 
         [HttpGet("bad-request")]

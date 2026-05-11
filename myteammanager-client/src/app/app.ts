@@ -25,13 +25,13 @@ export class App implements OnInit { // if we implements OnInit interface we sho
   }
 
   async getMembers(){
-    try{
-      console.log(this.http.get("https://localhost:7146/api/manageteammembers"));
-      return await lastValueFrom(this.http.get("https://localhost:7146/api/manageteammembers"));
-    }catch(error){
-      console.log(error);
-      throw error;
-    }
+    // try{
+    //   console.log(this.http.get("https://localhost:7146/api/manageteammembers"));
+    //   return await lastValueFrom(this.http.get("https://localhost:7146/api/manageteammembers"));
+    // }catch(error){
+    //   console.log(error);
+    //   throw error;
+    // }
   } 
 
   setCurrentUser(){

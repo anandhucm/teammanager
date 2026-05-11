@@ -49,4 +49,9 @@ export class Nav {
 
   }
 
+  NavigateToErrorPage(){
+    console.log("inside the navigate to erro fuincton");
+    this.router.navigate(['/errors']);
+  }
+
 }

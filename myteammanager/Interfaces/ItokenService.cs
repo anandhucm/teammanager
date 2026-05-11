@@ -5,7 +5,7 @@ namespace MYTEAMMANAGER.Interfaces
 {
     public interface ITokenService
     {
-        string CreateToken(TeamMember teamMember);
+        string CreateToken(User user);
 
     }
 }

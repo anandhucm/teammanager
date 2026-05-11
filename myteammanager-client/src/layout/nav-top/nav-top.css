@@ -69,12 +69,18 @@
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
   flex-direction: column;
   z-index: 1000;
+  /* display: none; */
 }
 
 /* Show dropdown on hover */
 .tm-user-area:hover .tm-user-dropdown {
   display: flex;
+  transition-delay: 5s
 }
+
+/* .tm-user-area:hover .tm-user-area {
+  display: flex;
+} */
 
 /* Dropdown items */
 .tm-dropdown-item {

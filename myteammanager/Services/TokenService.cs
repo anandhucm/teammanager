@@ -10,7 +10,7 @@ namespace MYTEAMMANAGER.Services
 {
     public class TokenService(IConfiguration config) : ITokenService
     {
-        public string CreateToken(TeamMember teamMember)
+        public string CreateToken(User user)
         {
             /*
              config usually come from appsettings.json or environmental variables.
@@ -37,8 +37,8 @@ namespace MYTEAMMANAGER.Services
             */
             var claims = new List<Claim>
             {
-                new (ClaimTypes.NameIdentifier, teamMember.Id.ToString()),
-                new ("userName", teamMember.UserName)
+                new (ClaimTypes.NameIdentifier, user.Id.ToString()),
+                new ("userName", user.UserName)
             };
 
 

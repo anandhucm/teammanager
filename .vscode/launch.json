@@ -1,20 +1,47 @@
 {
-    // Use IntelliSense to learn about possible attributes.
-    // Hover to view descriptions of existing attributes.
-    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
-    "version": "0.2.0",
-    "configurations": [
-        {
-            "name": "C#: myteammanager Debug",
-            "type": "dotnet",
-            "request": "launch",
-            "projectPath": "${workspaceFolder}/myteammanager/myteammanager.csproj"
-        },
-        {
-            "name": ".NET Core Attach",
-            "type": "coreclr",
-            "request": "attach"
-        }
-
-    ]
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug ASP.NET Core",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build",
+      "program": "${workspaceFolder}/myteammanager/bin/Debug/net8.0/myteammanager.dll",
+      "args": [],
+      "cwd": "${workspaceFolder}/myteammanager",
+      "stopAtEntry": false,
+      "env": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      // ✅ Kills previous dotnet process before launching new one
+      "launchBrowser": {
+        "enabled": false
+      }
+    },
+    {
+      "name": "Debug Angular",
+      "type": "chrome",
+      "request": "launch",
+      "url": "http://localhost:4200",
+      "webRoot": "${workspaceFolder}/myteammanager-client/src",
+      "sourceMapPathOverrides": {
+        "webpack:///./src/*": "${webRoot}/*"
+      }
+    },
+    {
+      "name": "Debug Angular (Edge)",
+      "type": "msedge",
+      "request": "launch",
+      "url": "http://localhost:4200",
+      "webRoot": "${workspaceFolder}/myteammanager-client/src"
+    }
+  ],
+  "compounds": [
+    {
+      "name": "🚀 Full Stack Debug (Angular + ASP.NET)",
+      "configurations": ["Debug ASP.NET Core", "Debug Angular"],
+      // ✅ Stops ALL debuggers (Angular + ASP.NET) when you hit Stop
+      "stopAll": true
+    }
+  ]
 }

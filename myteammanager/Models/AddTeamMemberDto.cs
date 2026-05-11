@@ -1,5 +1,6 @@
 
 using System.ComponentModel.DataAnnotations;
+using MYTEAMMANAGER.Models.Entities;
 
 namespace MYTEAMMANAGER.Models
 {
@@ -34,5 +35,11 @@ namespace MYTEAMMANAGER.Models
 
         [Required]
         public required string UserName { get; set; }
+
+        public required DateOnly DateOfBirth { get; set; }
+
+        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+
+        public User User {set; get;} = null!;
     }
 }

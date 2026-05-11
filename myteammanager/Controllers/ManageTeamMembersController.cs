@@ -1,117 +1,117 @@
-using Microsoft.AspNetCore.Mvc;
-using MYTEAMMANAGER.Data;
-using MYTEAMMANAGER.Models.Entities;
-using MYTEAMMANAGER.Models;
+// using Microsoft.AspNetCore.Mvc;
+// using MYTEAMMANAGER.Data;
+// using MYTEAMMANAGER.Models.Entities;
+// using MYTEAMMANAGER.Models;
 
-namespace MYTEAMMANAGER.Controllers
-{
-    public class ManageTeamMembersController(ApplicationDbContext dbContext) : BaseApiController
-    {
-        private readonly ApplicationDbContext dbContext = dbContext;
+// namespace MYTEAMMANAGER.Controllers
+// {
+//     public class ManageTeamMembersController(ApplicationDbContext dbContext) : BaseApiController
+//     {
+//         private readonly ApplicationDbContext dbContext = dbContext;
 
-        [HttpGet]
-        public IActionResult GetAllTeamMembers()
-        {
-            var allEmployeeTeamMembers = dbContext.TeamMembers.ToList();
-            return Ok(allEmployeeTeamMembers);
+//         [HttpGet]
+//         public IActionResult GetAllTeamMembers()
+//         {
+//             var allEmployeeTeamMembers = dbContext.TeamMembers.ToList();
+//             return Ok(allEmployeeTeamMembers);
 
-        }
+//         }
 
-        [HttpPost]
-        public IActionResult AddTeamMembers(AddTeamMemberDto addTeamMemberDto)
-        {
-            var TeamMemberEntity = new TeamMember()
-            {
-                FirstName = addTeamMemberDto.FirstName,
-                LastName = addTeamMemberDto.LastName,
-                Email = addTeamMemberDto.Email,
-                Age = addTeamMemberDto.Age,
-                EmployeeCode = addTeamMemberDto.EmployeeCode,
-                PasswordHash = null,
-                PasswordSalt = [],
-                UserName = null
-            };
+//         [HttpPost]
+//         public IActionResult AddTeamMembers(AddTeamMemberDto addTeamMemberDto)
+//         {
+//             var TeamMemberEntity = new TeamMember()
+//             {
+//                 FirstName = addTeamMemberDto.FirstName,
+//                 LastName = addTeamMemberDto.LastName,
+//                 Email = addTeamMemberDto.Email,
+//                 Age = addTeamMemberDto.Age,
+//                 EmployeeCode = addTeamMemberDto.EmployeeCode,
+//                 PasswordHash = null,
+//                 PasswordSalt = [],
+//                 UserName = null
+//             };
 
-            dbContext.TeamMembers.Add(TeamMemberEntity); // like persist in symfony
-            dbContext.SaveChanges();  //like flush in symfony 
-            return Ok(TeamMemberEntity);
+//             dbContext.TeamMembers.Add(TeamMemberEntity); // like persist in symfony
+//             dbContext.SaveChanges();  //like flush in symfony 
+//             return Ok(TeamMemberEntity);
 
-        }
+//         }
 
-        [HttpGet]
-        [Route("{id:guid}")]
-        public IActionResult GetTeamMemberById(Guid id) // id name should be same as the Route id name above
-        {
-            var teamMember = dbContext.TeamMembers.Find(id);
-            if (teamMember is null)
-            {
-                return NotFound();
-            }
-            return Ok(teamMember);
+//         [HttpGet]
+//         [Route("{id:guid}")]
+//         public IActionResult GetTeamMemberById(Guid id) // id name should be same as the Route id name above
+//         {
+//             var teamMember = dbContext.TeamMembers.Find(id);
+//             if (teamMember is null)
+//             {
+//                 return NotFound();
+//             }
+//             return Ok(teamMember);
 
-        }
+//         }
 
-        [HttpPut]
-        [Route("{id:guid}")]
+//         [HttpPut]
+//         [Route("{id:guid}")]
 
-        public IActionResult UpdateTeamMember(Guid id, UpdateTeamMemberDto updateTeamMemberDto)
-        {
-            var teamMember = dbContext.TeamMembers.Find(id);
-            // return Ok(id);
+//         public IActionResult UpdateTeamMember(Guid id, UpdateTeamMemberDto updateTeamMemberDto)
+//         {
+//             var teamMember = dbContext.TeamMembers.Find(id);
+//             // return Ok(id);
 
-            if (teamMember is null)
-            {
-                return NotFound();
-            }
+//             if (teamMember is null)
+//             {
+//                 return NotFound();
+//             }
 
-            teamMember.FirstName = updateTeamMemberDto.FirstName;
-            teamMember.LastName = updateTeamMemberDto.LastName;
-            teamMember.Email = updateTeamMemberDto.Email;
-            teamMember.Age = updateTeamMemberDto.Age;
-            teamMember.EmployeeCode = updateTeamMemberDto.EmployeeCode;
+//             teamMember.FirstName = updateTeamMemberDto.FirstName;
+//             teamMember.LastName = updateTeamMemberDto.LastName;
+//             teamMember.Email = updateTeamMemberDto.Email;
+//             teamMember.Age = updateTeamMemberDto.Age;
+//             teamMember.EmployeeCode = updateTeamMemberDto.EmployeeCode;
 
-            dbContext.SaveChanges(); // like flush in symfony
+//             dbContext.SaveChanges(); // like flush in symfony
 
-            return Ok(teamMember);
-        }
+//             return Ok(teamMember);
+//         }
 
-        [HttpDelete]
-        [Route("{id:guid}")]
-        public IActionResult DeleteTeamMember(Guid id)
-        {
-            var teamMember = dbContext.TeamMembers.Find(id);
-            if (teamMember is null)
-            {
-                return NotFound();
-            }
+//         [HttpDelete]
+//         [Route("{id:guid}")]
+//         public IActionResult DeleteTeamMember(Guid id)
+//         {
+//             var teamMember = dbContext.TeamMembers.Find(id);
+//             if (teamMember is null)
+//             {
+//                 return NotFound();
+//             }
 
-            dbContext.TeamMembers.Remove(teamMember);
-            dbContext.SaveChanges();
-            return Ok("successfully removed.");
-        }
+//             dbContext.TeamMembers.Remove(teamMember);
+//             dbContext.SaveChanges();
+//             return Ok("successfully removed.");
+//         }
 
-        [HttpGet]
-        [Route("search/{search}")]
-        public IActionResult GetTeamMemeberByName(string search)
-        {
-            var searchWord = search.ToString().ToLower();
-            var teamMember = dbContext.TeamMembers.Where(x =>
-            searchWord.Length >= 3 &&
-            (
-            x.FirstName.Contains(searchWord, StringComparison.CurrentCultureIgnoreCase) ||
-            (x.EmployeeCode == searchWord) ||
-            (x.LastName == searchWord)
-            )
-            ).ToList();
+//         [HttpGet]
+//         [Route("search/{search}")]
+//         public IActionResult GetTeamMemeberByName(string search)
+//         {
+//             var searchWord = search.ToString().ToLower();
+//             var teamMember = dbContext.TeamMembers.Where(x =>
+//             searchWord.Length >= 3 &&
+//             (
+//             x.FirstName.Contains(searchWord, StringComparison.CurrentCultureIgnoreCase) ||
+//             (x.EmployeeCode == searchWord) ||
+//             (x.LastName == searchWord)
+//             )
+//             ).ToList();
 
-            if (teamMember is null)
-            {
-                return NotFound();
-            }
-            return Ok(teamMember);
+//             if (teamMember is null)
+//             {
+//                 return NotFound();
+//             }
+//             return Ok(teamMember);
 
-        }
+//         }
 
 
-    }
-}
+//     }
+// }

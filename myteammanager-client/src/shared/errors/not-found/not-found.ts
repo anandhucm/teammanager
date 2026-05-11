@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { inject } from '@angular/core';
 import { Location } from '@angular/common';
+import { AccountService } from '../../../core/service/account-service';
 
 @Component({
   selector: 'app-not-found',
@@ -11,10 +12,12 @@ import { Location } from '@angular/common';
 export class NotFound {
 
   private location = inject(Location);
+  private accountService = inject(AccountService);
   goBack(){
     console.log("go back function d");
-    this.location.back();
+    // this.location.back();
     // window.history.back();
+    this.accountService.logout();
   }
 
 }

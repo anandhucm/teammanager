@@ -1,3 +1,6 @@
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
+
 namespace MYTEAMMANAGER.Models.Entities
 {
     public class TeamMember
@@ -18,13 +21,17 @@ namespace MYTEAMMANAGER.Models.Entities
 
         public required string EmployeeCode { get; set; }
 
-        public required byte[] PasswordHash { get; set; }
+        public required DateOnly DateOfBirth { get; set; }
 
-        public required byte[] PasswordSalt { get; set; }
+        public string? ImageUrl { get; set; }
 
-        public required string UserName { get; set; }
+        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
+        //navigation property
 
+        [JsonIgnore]
+        [ForeignKey(nameof(Id))]
+        public User User {set; get;} = null!;
 
     }
 }

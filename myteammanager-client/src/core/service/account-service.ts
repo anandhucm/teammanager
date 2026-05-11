@@ -2,6 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable, signal } from '@angular/core';
 import {User} from "../../types/types";
 import { tap } from 'rxjs';
+import { Router } from '@angular/router';
+import { environment } from '../../environments/environment.development';
 
 @Injectable({
   providedIn: 'root'
@@ -9,9 +11,14 @@ import { tap } from 'rxjs';
 export class AccountService {
 
   private account = inject(HttpClient);
-  public  baseUrl = "https://localhost:7146/api/";
+  public  baseUrl = environment.apiUrl;
   public memberData = signal<User | null>(null);
   protected isLoggedIn = signal(false);
+  protected router = inject(Router);
+  // constructor(){
+  //   console.log("inisde the constuctr");
+  //   this.logout();
+  // }
 
   login(credentials: any){
     return this.account.post<User>(this.baseUrl + "account/login", credentials).pipe(
@@ -27,9 +34,12 @@ export class AccountService {
   }
 
   logout(){
+    // console.log("Inisde he logout");
     this.isLoggedIn.set(false);
     localStorage.removeItem("memberData");
     this.memberData.set(null);
+    this.router.navigateByUrl("/logout");
+    
   }
 
 }

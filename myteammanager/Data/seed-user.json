@@ -1,0 +1,167 @@
+[
+  {
+    "FirstName": "Arun",
+    "MiddleName": null,
+    "LastName": "Kumar",
+    "Age": 28,
+    "MobileNumber": "9876543210",
+    "Email": "arun.kumar@example.com",
+    "EmployeeCode": "EMP001",
+    "UserName": "arun.k",
+    "DateOfBirth": "1997-05-12"
+  },
+  {
+    "FirstName": "Rahul",
+    "MiddleName": "S",
+    "LastName": "Nair",
+    "Age": 30,
+    "MobileNumber": "9876500001",
+    "Email": "rahul.nair@example.com",
+    "EmployeeCode": "EMP002",
+    "UserName": "rahul.n",
+    "DateOfBirth": "1995-03-20"
+  },
+  {
+    "FirstName": "Anjali",
+    "MiddleName": null,
+    "LastName": "Menon",
+    "Age": 26,
+    "MobileNumber": "9876500002",
+    "Email": "anjali.menon@example.com",
+    "EmployeeCode": "EMP003",
+    "UserName": "anjali.m",
+    "DateOfBirth": "1999-01-15"
+  },
+  {
+    "FirstName": "Vishnu",
+    "MiddleName": "P",
+    "LastName": "Das",
+    "Age": 32,
+    "MobileNumber": null,
+    "Email": "vishnu.das@example.com",
+    "EmployeeCode": "EMP004",
+    "UserName": "vishnu.d",
+    "DateOfBirth": "1993-07-08"
+  },
+  {
+    "FirstName": "Sneha",
+    "MiddleName": "R",
+    "LastName": "Pillai",
+    "Age": 27,
+    "MobileNumber": "9876500003",
+    "Email": "sneha.p@example.com",
+    "EmployeeCode": "EMP005",
+    "UserName": "sneha.p",
+    "DateOfBirth": "1998-11-25"
+  },
+  {
+    "FirstName": "Kiran",
+    "MiddleName": null,
+    "LastName": "Varma",
+    "Age": 29,
+    "MobileNumber": "9876500004",
+    "Email": "kiran.varma@example.com",
+    "EmployeeCode": "EMP006",
+    "UserName": "kiran.v",
+    "DateOfBirth": "1996-09-10"
+  },
+  {
+    "FirstName": "Divya",
+    "MiddleName": "K",
+    "LastName": "Nair",
+    "Age": 25,
+    "MobileNumber": "9876500005",
+    "Email": "divya.nair@example.com",
+    "EmployeeCode": "EMP007",
+    "UserName": "divya.n",
+    "DateOfBirth": "2000-02-18"
+  },
+  {
+    "FirstName": "Manoj",
+    "MiddleName": null,
+    "LastName": "Krishnan",
+    "Age": 35,
+    "MobileNumber": "9876500006",
+    "Email": "manoj.k@example.com",
+    "EmployeeCode": "EMP008",
+    "UserName": "manoj.k",
+    "DateOfBirth": "1990-06-30"
+  },
+  {
+    "FirstName": "Akhil",
+    "MiddleName": "M",
+    "LastName": "Raj",
+    "Age": 24,
+    "MobileNumber": "9876500007",
+    "Email": "akhil.raj@example.com",
+    "EmployeeCode": "EMP009",
+    "UserName": "akhil.r",
+    "DateOfBirth": "2001-04-05"
+  },
+  {
+    "FirstName": "Meera",
+    "MiddleName": null,
+    "LastName": "Nambiar",
+    "Age": 31,
+    "MobileNumber": "9876500008",
+    "Email": "meera.n@example.com",
+    "EmployeeCode": "EMP010",
+    "UserName": "meera.n",
+    "DateOfBirth": "1994-08-22"
+  },
+  {
+    "FirstName": "Rohit",
+    "MiddleName": "T",
+    "LastName": "Menon",
+    "Age": 33,
+    "MobileNumber": "9876500009",
+    "Email": "rohit.m@example.com",
+    "EmployeeCode": "EMP011",
+    "UserName": "rohit.m",
+    "DateOfBirth": "1992-12-12"
+  },
+  {
+    "FirstName": "Neha",
+    "MiddleName": null,
+    "LastName": "Joseph",
+    "Age": 28,
+    "MobileNumber": "9876500010",
+    "Email": "neha.j@example.com",
+    "EmployeeCode": "EMP012",
+    "UserName": "neha.j",
+    "DateOfBirth": "1997-10-01"
+  },
+  {
+    "FirstName": "Suresh",
+    "MiddleName": "B",
+    "LastName": "Pillai",
+    "Age": 40,
+    "MobileNumber": null,
+    "Email": "suresh.p@example.com",
+    "EmployeeCode": "EMP013",
+    "UserName": "suresh.p",
+    "DateOfBirth": "1985-01-01"
+  },
+  {
+    "FirstName": "Lakshmi",
+    "MiddleName": "S",
+    "LastName": "Nair",
+    "Age": 29,
+    "MobileNumber": "9876500011",
+    "Email": "lakshmi.n@example.com",
+    "EmployeeCode": "EMP014",
+    "UserName": "lakshmi.n",
+    "DateOfBirth": "1996-06-14"
+  },
+  {
+    "FirstName": "Ajith",
+    "MiddleName": null,
+    "LastName": "Kumar",
+    "Age": 34,
+    "MobileNumber": "9876500012",
+    "Email": "ajith.k@example.com",
+    "EmployeeCode": "EMP015",
+    "UserName": "ajith.k",
+    "DateOfBirth": "1991-03-03"
+  }
+]

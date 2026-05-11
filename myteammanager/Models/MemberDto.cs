@@ -16,9 +16,6 @@ namespace MYTEAMMANAGER.Models
         // [Required(AllowEmptyStrings = true)]  // this will only validates the null not the empty string.
         public required string LastName { get; set; }
 
-        [Required]
-        public required string EmployeeCode { get; set; }
-
         public string? ImageUrl { get; set; }
 
         public string Token { get; set; }

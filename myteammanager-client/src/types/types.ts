@@ -4,5 +4,6 @@ export type User = {
     lastName:string,
     middleName:string,
     employeeCode:string,
-    token:string
+    token:string,
+    imageUrl: string
 }

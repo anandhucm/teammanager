@@ -6,21 +6,41 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using MYTEAMMANAGER.MiddleWare;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Binders;
+using System.Reflection.Metadata;
+using MYTEAMMANAGER.OptionPatterns;
+using MyGrpcService;
 
-var builder = WebApplication.CreateBuilder(args);
+// This switch allows gRPC to work over HTTP (without SSL/TLS)
+// AppContext.SetSwitch("System.Net.Http.SocketsHttpHandler.Http2UnencryptedSupport", true);
+
+var builder = WebApplication.CreateBuilder(args); 
 
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// builder.Services.AddHttpClient();
+
 
 //injecting the ApplicationDbContext inside the Program.cs file.
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
 );
+
+//registering the configuration options - this registration works for all - IOptions, IOptionsSnapshot, IOptionsMonitor
+//IOptions          →  reads config ONCE at startup,  never changes
+//IOptionsSnapshot  →  reads config ONCE per request, changes between requests
+//IOptionsMonitor   →  reads config LIVE,             reacts instantly to changes
+builder.Services.Configure<AzureBlobSettings>(
+    builder.Configuration.GetSection("AzureBlobStorage")
+);
 builder.Services.AddCors();
 builder.Services.AddScoped<ITokenService, TokenService>();
+builder.Services.AddScoped<IMemberRepository, MemberRepository>();
+builder.Services.AddScoped<IBlobService, BlobService>();
+builder.Services.AddScoped<AzureFunctionsService>();
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
@@ -37,13 +57,23 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 
 builder.Services.AddControllers();
 
+builder.Services.AddGrpcClient<Greeter.GreeterClient>(o =>
+{
+    o.Address = new Uri("http://localhost:5098"); 
+});
+
 var app = builder.Build();
 
-app.MapControllers();
+
 
 // Configure the HTTP request pipeline.
 
 app.UseMiddleware<ExceptionMiddleWare>();
+
+if (!app.Environment.IsDevelopment())
+{
+    app.UseHttpsRedirection();
+}
 
 app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:4200", "https://localhost:4200"));
 if (app.Environment.IsDevelopment())
@@ -52,9 +82,25 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseRouting(); 
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.UseHttpsRedirection();
+app.MapControllers();
+
+using var scope = app.Services.CreateScope();
+var services = scope.ServiceProvider;
+try
+{
+    var context = services.GetRequiredService<ApplicationDbContext>();
+    await context.Database.MigrateAsync();
+    await Seed.SeedUsers(context);
+}
+catch (Exception ex)
+{
+    var logger = services.GetRequiredService<ILogger<Program>>();
+    logger.LogError(ex, "Error occured during migration");
+
+}
 app.Run();
 

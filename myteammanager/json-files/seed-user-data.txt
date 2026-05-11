@@ -1,0 +1,167 @@
+[
+  {
+    "firstName": "Arun",
+    "middleName": null,
+    "lastName": "Kumar",
+    "age": 28,
+    "mobileNumber": "9876543210",
+    "email": "arun.kumar@example.com",
+    "employeeCode": "EMP001",
+    "userName": "arun.k",
+    "dateOfBirth": "1997-05-12T00:00:00"
+  },
+  {
+    "firstName": "Rahul",
+    "middleName": "S",
+    "lastName": "Nair",
+    "age": 30,
+    "mobileNumber": "9876500001",
+    "email": "rahul.nair@example.com",
+    "employeeCode": "EMP002",
+    "userName": "rahul.n",
+    "dateOfBirth": "1995-03-20T00:00:00"
+  },
+  {
+    "firstName": "Anjali",
+    "middleName": null,
+    "lastName": "Menon",
+    "age": 26,
+    "mobileNumber": "9876500002",
+    "email": "anjali.menon@example.com",
+    "employeeCode": "EMP003",
+    "userName": "anjali.m",
+    "dateOfBirth": "1999-01-15T00:00:00"
+  },
+  {
+    "firstName": "Vishnu",
+    "middleName": "P",
+    "lastName": "Das",
+    "age": 32,
+    "mobileNumber": null,
+    "email": "vishnu.das@example.com",
+    "employeeCode": "EMP004",
+    "userName": "vishnu.d",
+    "dateOfBirth": "1993-07-08T00:00:00"
+  },
+  {
+    "firstName": "Sneha",
+    "middleName": "R",
+    "lastName": "Pillai",
+    "age": 27,
+    "mobileNumber": "9876500003",
+    "email": "sneha.p@example.com",
+    "employeeCode": "EMP005",
+    "userName": "sneha.p",
+    "dateOfBirth": "1998-11-25T00:00:00"
+  },
+  {
+    "firstName": "Kiran",
+    "middleName": null,
+    "lastName": "Varma",
+    "age": 29,
+    "mobileNumber": "9876500004",
+    "email": "kiran.varma@example.com",
+    "employeeCode": "EMP006",
+    "userName": "kiran.v",
+    "dateOfBirth": "1996-09-10T00:00:00"
+  },
+  {
+    "firstName": "Divya",
+    "middleName": "K",
+    "lastName": "Nair",
+    "age": 25,
+    "mobileNumber": "9876500005",
+    "email": "divya.nair@example.com",
+    "employeeCode": "EMP007",
+    "userName": "divya.n",
+    "dateOfBirth": "2000-02-18T00:00:00"
+  },
+  {
+    "firstName": "Manoj",
+    "middleName": null,
+    "lastName": "Krishnan",
+    "age": 35,
+    "mobileNumber": "9876500006",
+    "email": "manoj.k@example.com",
+    "employeeCode": "EMP008",
+    "userName": "manoj.k",
+    "dateOfBirth": "1990-06-30T00:00:00"
+  },
+  {
+    "firstName": "Akhil",
+    "middleName": "M",
+    "lastName": "Raj",
+    "age": 24,
+    "mobileNumber": "9876500007",
+    "email": "akhil.raj@example.com",
+    "employeeCode": "EMP009",
+    "userName": "akhil.r",
+    "dateOfBirth": "2001-04-05T00:00:00"
+  },
+  {
+    "firstName": "Meera",
+    "middleName": null,
+    "lastName": "Nambiar",
+    "age": 31,
+    "mobileNumber": "9876500008",
+    "email": "meera.n@example.com",
+    "employeeCode": "EMP010",
+    "userName": "meera.n",
+    "dateOfBirth": "1994-08-22T00:00:00"
+  },
+  {
+    "firstName": "Rohit",
+    "middleName": "T",
+    "lastName": "Menon",
+    "age": 33,
+    "mobileNumber": "9876500009",
+    "email": "rohit.m@example.com",
+    "employeeCode": "EMP011",
+    "userName": "rohit.m",
+    "dateOfBirth": "1992-12-12T00:00:00"
+  },
+  {
+    "firstName": "Neha",
+    "middleName": null,
+    "lastName": "Joseph",
+    "age": 28,
+    "mobileNumber": "9876500010",
+    "email": "neha.j@example.com",
+    "employeeCode": "EMP012",
+    "userName": "neha.j",
+    "dateOfBirth": "1997-10-01T00:00:00"
+  },
+  {
+    "firstName": "Suresh",
+    "middleName": "B",
+    "lastName": "Pillai",
+    "age": 40,
+    "mobileNumber": null,
+    "email": "suresh.p@example.com",
+    "employeeCode": "EMP013",
+    "userName": "suresh.p",
+    "dateOfBirth": "1985-01-01T00:00:00"
+  },
+  {
+    "firstName": "Lakshmi",
+    "middleName": "S",
+    "lastName": "Nair",
+    "age": 29,
+    "mobileNumber": "9876500011",
+    "email": "lakshmi.n@example.com",
+    "employeeCode": "EMP014",
+    "userName": "lakshmi.n",
+    "dateOfBirth": "1996-06-14T00:00:00"
+  },
+  {
+    "firstName": "Ajith",
+    "middleName": null,
+    "lastName": "Kumar",
+    "age": 34,
+    "mobileNumber": "9876500012",
+    "email": "ajith.k@example.com",
+    "employeeCode": "EMP015",
+    "userName": "ajith.k",
+    "dateOfBirth": "1991-03-03T00:00:00"
+  }
+]
