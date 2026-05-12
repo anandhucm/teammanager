@@ -252,6 +252,8 @@ namespace MYTEAMMANAGER.Controllers
             
         }
 
+
+
         [HttpPost("upload-photo")]
         public async Task<ActionResult<UploadResult>> uploadPhoto([FromForm] IFormFile file_details, [FromForm] string id)
         {
@@ -279,6 +281,13 @@ namespace MYTEAMMANAGER.Controllers
             
         }
 
+
+
+        //Role based authorization
+        // [Authorize(Roles = "Anjali")]
+
+        //Policy based authorizad
+        [Authorize(Policy="LastNamePolicy")]
 
         [HttpPost("check-azure-function")]
         public async Task<ActionResult<string>> checheckAzureFunction()

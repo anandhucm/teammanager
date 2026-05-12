@@ -3,7 +3,7 @@ import { inject, Injectable, signal } from '@angular/core';
 import {User} from "../../types/types";
 import { tap } from 'rxjs';
 import { Router } from '@angular/router';
-import { environment } from '../../environments/environment.development';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'

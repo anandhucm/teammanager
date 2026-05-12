@@ -54,12 +54,42 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         };
     });
 
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("LastNamePolicy", policy =>
+    {
+        policy.RequireClaim("LastName", "Menon");
+        
+    });
+});
+
 
 builder.Services.AddControllers();
 
 builder.Services.AddGrpcClient<Greeter.GreeterClient>(o =>
 {
-    o.Address = new Uri("http://localhost:5098"); 
+    o.Address = new Uri(
+        builder.Configuration["GrpcSettings:Url"]!
+    );
+});
+
+var allowedOrigins =
+    builder.Configuration
+        .GetSection("Cors:AllowedOrigins")
+        .Get<string[]>();
+
+
+
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("CorsPolicy", policy =>
+    {
+        policy
+            .AllowAnyHeader()
+            .AllowAnyMethod()
+            .WithOrigins(allowedOrigins!);
+    });
 });
 
 var app = builder.Build();
@@ -75,7 +105,10 @@ if (!app.Environment.IsDevelopment())
     app.UseHttpsRedirection();
 }
 
-app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:4200", "https://localhost:4200"));
+
+app.UseCors("CorsPolicy");
+
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();

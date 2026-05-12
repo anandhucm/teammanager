@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, inject, Input } from '@angular/core';
 import { UploadResponse } from "../member-card/card-response";
 import { tap } from 'rxjs';
-import { environment } from '../../../environments/environment.development';
+import { environment } from '../../../environments/environment';
 import { AccountService } from '../../../core/service/account-service';
 
 @Component({

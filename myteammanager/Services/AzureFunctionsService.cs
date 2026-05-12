@@ -7,15 +7,17 @@ namespace MYTEAMMANAGER.Services
     {
 
         private readonly HttpClient _httpClient;
+        private readonly IConfiguration _config;
 
-        public AzureFunctionsService(HttpClient httpClient)
+        public AzureFunctionsService(HttpClient httpClient, IConfiguration config)
         {
             _httpClient = httpClient;
+            _config = config;
         }
 
         public async Task PassWelcomeEmail()
         {
-            var url = "http://localhost:7071/api/PassWelcomeEmail";
+            var url = _config["FunctionSettings:Url"] + "/api/PassWelcomeEmail";
             var response = await _httpClient.PostAsJsonAsync(
                 url,
                 new

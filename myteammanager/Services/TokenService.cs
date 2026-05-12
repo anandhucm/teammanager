@@ -28,17 +28,20 @@ namespace MYTEAMMANAGER.Services
 
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
 
-            /*
+            /*  
             claim is a peace of information about the user stored in the token.
             [
                 { "type": "nameid", "value": "101" },
                 { "type": "userName", "value": "Anandhu" }
             ]
             */
+
             var claims = new List<Claim>
             {
                 new (ClaimTypes.NameIdentifier, user.Id.ToString()),
-                new ("userName", user.UserName)
+                new ("userName", user.UserName),
+                new (ClaimTypes.Role, user.FirstName),
+                new ("LastName", user.LastName)
             };
 
 
