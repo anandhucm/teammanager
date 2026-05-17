@@ -5,7 +5,15 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UserSecretsId>f07e439e-15ec-4224-b2df-ebde8e861964</UserSecretsId>
+    <SpaRoot>myteammanager-client</SpaRoot>
   </PropertyGroup>
+
+  <Target Name="PublishAngular" BeforeTargets="Build" 
+        Condition="'$(Configuration)' == 'Release'">
+  <Exec Command="npm install" WorkingDirectory="$(SpaRoot)" />
+  <Exec Command="ng build --configuration production" 
+        WorkingDirectory="$(SpaRoot)" />
+</Target>
 
   <ItemGroup>
     <PackageReference Include="Azure.Storage.Blobs" Version="12.27.0" />

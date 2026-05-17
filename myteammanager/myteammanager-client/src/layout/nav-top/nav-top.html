@@ -1,0 +1,42 @@
+@if (this.accountService.memberData(); as user) {
+  <div class="tm-topbar">
+    <div class="tm-topbar-left">
+      <span class="tm-app-title">Team Manager</span>
+    </div>
+
+    <div class="tm-topbar-right">
+      <div class="tm-user-area">
+        <img
+          [src]="user.imageUrl"
+          alt="User Avatar" 
+          class="tm-user-avatar"
+        />
+
+        <div class="tm-user-meta">
+          <span class="tm-user-name">
+            {{ user.firstName }}
+          </span>
+          <span class="tm-user-code">
+            {{ user.employeeCode }}
+          </span>
+        </div>
+
+        <span class="tm-dropdown-icon">⌄</span>
+
+        <div class="tm-user-dropdown">
+          <button class="tm-dropdown-item" routerLink="/edit-profile">
+            Edit Profile
+          </button>
+
+          <div class="tm-dropdown-separator"></div>
+
+          <button
+            class="tm-dropdown-item tm-logout"
+            (click)="logout()">
+            Logout
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+}

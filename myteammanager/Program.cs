@@ -26,7 +26,14 @@ builder.Services.AddSwaggerGen();
 
 //injecting the ApplicationDbContext inside the Program.cs file.
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
+    options.UseSqlServer(
+        builder.Configuration.GetConnectionString("DefaultConnection"),
+        sqlOptions => sqlOptions.EnableRetryOnFailure(
+            maxRetryCount: 5,
+            maxRetryDelay: TimeSpan.FromSeconds(30),
+            errorNumbersToAdd: null
+        )
+    )
 );
 
 //registering the configuration options - this registration works for all - IOptions, IOptionsSnapshot, IOptionsMonitor
@@ -92,7 +99,13 @@ builder.Services.AddCors(options =>
     });
 });
 
+
 var app = builder.Build();
+
+
+
+app.UseDefaultFiles();       // serves index.html automatically
+app.UseStaticFiles();        // serves wwwroot folder
 
 
 
@@ -135,5 +148,10 @@ catch (Exception ex)
     logger.LogError(ex, "Error occured during migration");
 
 }
+
+
+
+app.MapFallbackToFile("index.html");
+
 app.Run();
 

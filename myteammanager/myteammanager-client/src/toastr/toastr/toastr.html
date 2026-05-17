@@ -1,0 +1,11 @@
+@if(toast()){
+    <div class="toast" [class]="toast()?.status">
+        <div>
+            {{ toast()?.message }}
+        </div>
+        <div>
+            <button class="toast-close-btn" (click)="closeToast()">x</button>
+        </div>  
+    </div>
+}
+

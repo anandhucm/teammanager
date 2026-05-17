@@ -1,0 +1,231 @@
+/* MAIN CONTAINER */
+.container {
+  width: 100%;
+  max-width: 1000px;
+  height: 100%;
+  max-height: 600px;
+
+  display: flex;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* LEFT WELCOME AREA */
+.welcome-area {
+  flex: 1;
+  padding: 40px;
+  background-color: #1b2530;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  color: #e5e9f0;
+}
+
+.welcome-content {
+  padding-top: 30px;
+  max-width: 90%;
+  position: relative;
+  z-index: 2;
+}
+
+.welcome-content h1 {
+  font-size: 2.2em;
+  font-weight: 700;
+  margin-bottom: 15px;
+  line-height: 1.3;
+  color: #d8dee9;
+}
+
+.welcome-content p {
+  font-size: 1em;
+  line-height: 1.6;
+  color: #c7d0da;
+  opacity: 0.75;
+}
+
+/* ABSTRACT GRAPHICS */
+.abstract-graphics {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.abstract-graphics::before {
+  content: '';
+  position: absolute;
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  background: rgba(80, 120, 150, 0.08);
+  top: -50px;
+  right: -100px;
+}
+
+.abstract-graphics::after {
+  content: '';
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  background: rgba(80, 150, 170, 0.10);
+  bottom: -150px;
+  left: -150px;
+}
+
+/* FOOTER */
+.footer {
+  font-size: 0.75em;
+  opacity: 0.5;
+  z-index: 2;
+}
+
+.footer span {
+  font-weight: 600;
+}
+
+/* RIGHT LOGIN AREA */
+.login-area {
+  flex: 1;
+  background-color: #1f2933;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+}
+
+.login-form-card {
+  width: 85%;
+  max-width: 350px;
+  text-align: center;
+}
+
+.login-form-card h2 {
+  font-size: 1em;
+  letter-spacing: 3px;
+  margin-bottom: 40px;
+  font-weight: 600;
+  color: #aeb9c4;
+}
+
+/* INPUT GROUP */
+.input-group {
+  display: flex;
+  align-items: center;
+  background-color: #27323d;
+  border: 1px solid #2e3a46;
+  border-radius: 8px;
+  padding: 10px 15px;
+  margin-bottom: 20px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.input-group:focus-within {
+  border-color: #4cc0d0;
+  box-shadow: 0 0 0 2px rgba(76, 192, 208, 0.25);
+}
+
+.input-group i {
+  font-size: 1.1em;
+  margin-right: 15px;
+  color: #7ccfd3;
+}
+
+.input-group input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 0.95em;
+  color: #e5e9f0;
+}
+
+/* OPTIONS */
+.options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  font-size: 0.9em;
+}
+
+.remember-me {
+  display: flex;
+  align-items: center;
+  color: #b0bac4;
+  cursor: pointer;
+}
+
+.remember-me input[type="checkbox"] {
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  border: 2px solid #3b4955;
+  background-color: #202a33;
+  margin-right: 8px;
+  transition: 0.2s;
+  position: relative;
+}
+
+.remember-me input[type="checkbox"]:checked {
+  background-color: #4cc0d0;
+  border-color: #4cc0d0;
+}
+
+.remember-me input[type="checkbox"]:checked::after {
+  content: '✓';
+  position: absolute;
+  color: #0f141a;
+  font-size: 12px;
+  font-weight: 700;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.forgot-password {
+  color: #7ccfd3;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.forgot-password:hover {
+  color: #96e3e8;
+}
+
+/* LOGIN BUTTON */
+.login-button {
+  width: 100%;
+  padding: 15px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-size: 1em;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: #0f141a;
+  background: linear-gradient(to right, #7ccfd3, #4cb5c2, #367a85);
+  background-size: 200% auto;
+  transition: 0.5s;
+}
+
+.login-button:hover {
+  background-position: right center;
+  box-shadow: 0 5px 15px rgba(76, 192, 208, 0.25);
+}
+
+/* FULLSCREEN PAGE WRAPPER */
+.auth-screen {
+  position: fixed;
+  inset: 0;
+  background-color: #0f141a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+

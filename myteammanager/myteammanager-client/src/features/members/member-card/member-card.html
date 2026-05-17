@@ -1,0 +1,19 @@
+<div class="profile-card">
+  <!-- <img src="{{member?.imageUrl}}" class="profile-img"> -->
+
+  <div  [attr.data-id]= "member.id" class="card-body">
+    <h3 class="name">{{ member.firstName }}</h3>
+
+    <p><strong>Age:</strong> {{ member.age }}</p>
+    <p><strong>Employee Code:</strong> {{ member.employeeCode }}</p>
+    <p><strong>Date of Birth:</strong> {{ member.dateOfBirth }}</p>
+
+    <input [attr.data-id]="member.id" #fileInput type="file"
+     />
+    <button (click)="uploadPhoto(fileInput)" class="view-btn">upLoadPhoto</button>
+
+    <button style="margin-left: 20px;" (click)="checkGrpc()" class="check-grpc"> Check GRPC </button>
+
+    <button style="margin-left: 20px;" (click)="checkAzureFunction()" class="check-azure-function"> Check Azure Function </button>
+  </div>
+</div>

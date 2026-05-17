@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Manager App Login</title>
+</head>
+<body>
+    @if (!this.accountService.memberData()){
+        <div class="auth-screen">
+            <div class="container">
+                <div class="welcome-area">
+                    <div class="welcome-content">
+                        <h1>Welcome to the Team Manager App!</h1>
+                        <p>Access your projects, track team progress, and manage your tasks efficiently.</p>
+                        <div class="abstract-graphics"></div>
+                    </div>
+                    <div class="footer">
+                        Designed for <span>High-Performance Teams</span>
+                    </div>
+                </div>
+                <!-- <button (click)="NavigateToErrorPage()">Move To Error Page</button>tm-user-area -->
+                <div class="login-area">
+                    <div class="login-form-card">
+                        <h2>MANAGER LOGIN</h2>
+                        <form #loginForm="ngForm" (ngSubmit)="login()">
+                            <div class="input-group">
+                                <i class="fas fa-user"></i>
+                                <input [(ngModel)]="credentials.UserName" name="email" type="text" placeholder="Team ID or Email">
+                            </div>
+                            <div class="input-group">
+                                <i class="fas fa-lock"></i> 
+                                <input [(ngModel)]="credentials.Password" name="password" type="password" placeholder="Secure Password">
+                            </div>
+                            
+                            <div class="options">
+                                <label class="remember-me">
+                                    <input type="checkbox" checked>
+                                    Remember Me
+                                </label>
+                                <a href="#" class="forgot-password">Forgot Password?</a>
+                            </div>
+                            <button type="submit" class="login-button">LOG IN</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    </body>
+    </html>
