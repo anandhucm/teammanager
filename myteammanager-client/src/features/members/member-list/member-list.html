@@ -1,6 +1,0 @@
-<div>
-    @for (member of members$ | async; track member.id) {
-        <!-- <p data-id={{member.id}}>{{member.firstName}}</p> -->
-        <app-member-card [member]="member"></app-member-card>   
-    }
-</div>
