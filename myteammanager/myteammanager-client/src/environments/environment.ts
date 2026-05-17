@@ -1,4 +1,4 @@
 export const environment = {
     production: true,
-    apiUrl: 'https://api.teammanager.com/',
+    apiUrl: 'https://myteammanager.azurewebsites.net/',
 };
